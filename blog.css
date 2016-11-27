@@ -4,6 +4,12 @@
 
 .navbar-nav>li>a.nopadtop{
 	padding-top: 0px;
+	color:black;
+}
+
+.navbar-nav>li>a.textcolor{
+	color:white;
+	padding-top:20px
 }
 
 hr.nomargintop{
@@ -32,4 +38,13 @@ h2.blgtitle a{
 	margin: 0 0 16px;
 	line-height:140%;
 	font-size:36px;
+}
+.col-lg-5.nopad{
+	padding-left: 0px;
+}
+.blgdate{
+	font-size: 14px;
+	margin-bottom:30px;
+	padding:0px;
+
 }
