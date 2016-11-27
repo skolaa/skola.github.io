@@ -42,9 +42,20 @@ h2.blgtitle a{
 .col-lg-5.nopad{
 	padding-left: 0px;
 }
+.col-lg-12.nopad{
+	padding-left: 0px;
+}
 .blgdate{
 	font-size: 14px;
 	margin-bottom:30px;
 	padding:0px;
 
+}
+a.morelink {
+	text-decoration:none;
+	outline: none;
+	color: #279FCD;
+}
+.morecontent span {
+	display: none;
 }
