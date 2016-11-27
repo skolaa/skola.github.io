@@ -56,6 +56,21 @@ a.morelink {
 	outline: none;
 	color: #279FCD;
 }
-.morecontent span {
-	display: none;
+.site-logo{
+	font-family: 'Raleway', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 0;
+	font-weight: 500;
+}
+.site-logo a{
+	background-position: center !important;
+background-size: contain !important;
+float: left;
+display: block;
+min-height: 90px;
+text-indent: -9999px;
+margin-left: 40px;
+width: 100%;
+background: url(http://usabilitygeek.com/wp-content/uploads/2014/05/UsabilityGeek-Logo.png) no-repeat !important;
 }
