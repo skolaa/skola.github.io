@@ -14,7 +14,7 @@ blogIndexApp.config(['$routeProvider',
 		redirectTo: '/main'
       });
 }]);
-blogIndexApp.controller('blogIndexController',["$scope","$http", "$window", "blogService",function($scope, $http, $window, blogService){
+blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",function($scope, $http, $window){
   $scope.blogList = {}
   $scope.authorName = []
   $scope.profileColorArr  = ["#4ECDC4", "#FF6B6B", "#FE4365", "#033649", "#83AF9B",
