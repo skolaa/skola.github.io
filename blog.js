@@ -15,7 +15,7 @@ blogIndexApp.config(['$routeProvider','$httpProvider',
 		redirectTo: '/main'
       });
 }]);
-blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",function($scope, $http, $window){
+blogIndexApp.controller('blogIndexController',["$scope","$http", "$window","$routeParams",function($scope, $http, $window, $routeParams){
   $scope.blogList = {}
   $scope.authorName = []
   $scope.profileColorArr  = ["#4ECDC4", "#FF6B6B", "#FE4365", "#033649", "#83AF9B",
@@ -37,7 +37,8 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",funct
           if(authorIds[id]==$scope.authorList[author].id)
               $scope.authorName.push($scope.authorList[author].name)
   }
-  $scope.readMoreBlog = function(blogId){
+  $scope.readMoreBlog = function(){
+    var blogId = $routeParams.blogId;
     $http.get("https://35.154.87.133:9000/blog/"+blogId).success(function(response){
       console.log(response)
       $scope.blogDetail = response
@@ -46,8 +47,4 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",funct
       console.log(e)
     });
   }
-
-$scope.addComment = function(){
-
-}
 }]);
