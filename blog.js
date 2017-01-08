@@ -1,6 +1,7 @@
 var blogIndexApp = angular.module('blogIndexApp', ['ngRoute']);
-blogIndexApp.config(['$routeProvider',
-  function($routeProvider) {
+blogIndexApp.config(['$routeProvider','$httpProvider',
+  function($routeProvider,$httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
     $routeProvider.
       when('/main', {
 		templateUrl: 'main.html',
