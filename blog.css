@@ -34,11 +34,14 @@ body {
 h2.blgtitle a{
 	color: #222;
 	font-family: 'Raleway', sans-serif;
-	font-weight: 590;
+	font-weight: 600;
 	margin: 0 0 16px;
 	line-height:140%;
 	font-size:36px;
 }
+/*h2.blgtitle a:hover{
+	color:#f2a561;
+}*/
 .col-lg-5.nopad{
 	padding-left: 0px;
 }
@@ -50,6 +53,16 @@ h2.blgtitle a{
 	margin-bottom:30px;
 	padding:0px;
 
+}
+.btn_subscribe {
+    background-color: #E16237;
+    border: 1px solid #E16237;
+    color: #FFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: calc(6px + 0.8vw);
+    border-radius: 1px;
+    width: 50%;
+    height: 5%;
 }
 a.morelink {
 	text-decoration:none;
@@ -72,5 +85,5 @@ min-height: 90px;
 text-indent: -9999px;
 margin-left: 40px;
 width: 100%;
-background: url(http://usabilitygeek.com/wp-content/uploads/2014/05/UsabilityGeek-Logo.png) no-repeat !important;
+background: url(https://usabilitygeek.com/wp-content/uploads/2014/05/UsabilityGeek-Logo.png) no-repeat !important;
 }
