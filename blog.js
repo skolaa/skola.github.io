@@ -21,7 +21,7 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",funct
    "#ECD078", "#C02942", "#53777A", "#556270", "#C7F464",
   "#490A3D", "#BD1550", "#E6AC27"]
   $scope.getBlogList = function(){
-    $http.get("http://35.154.87.133:9000/?page=0&&size=10").success(function(response){
+    $http.get("https://35.154.87.133:9000/?page=0&&size=10").success(function(response){
       console.log(response)
       $scope.authorList = response.authors
       $scope.blogList = response.blogs
@@ -37,7 +37,7 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window",funct
               $scope.authorName.push($scope.authorList[author].name)
   }
   $scope.readMoreBlog = function(blogId){
-    $http.get("http://35.154.87.133:9000/blog/"+blogId).success(function(response){
+    $http.get("https://35.154.87.133:9000/blog/"+blogId).success(function(response){
       console.log(response)
       $scope.blogDetail = response
     //  $window.location.href = "file:///home/shubhangi.goel/myprojects/frontend/blog_detail.html"
