@@ -43,6 +43,9 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window","$rou
       console.log(response)
       $scope.blogDetail = response
       $scope.blogDetail.blogText = $sce.trustAsHtml($scope.blogDetail.blogText)
+       $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        })
     }).error(function(e){
       console.log(e)
     });
