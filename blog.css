@@ -26,22 +26,23 @@ hr.nomargintop{
 body {
     background-color: #fff;
     color: #222;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
     font-weight: 300;
     line-height: 1.625;
 }
 h2.blgtitle a{
-	color: #222;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 600;
+	color: #423E4F;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
 	margin: 0 0 16px;
 	line-height:140%;
-	font-size:36px;
 }
-/*h2.blgtitle a:hover{
-	color:#f2a561;
-}*/
+h2.blgtitle>a:hover{
+	/*color:#f2a561;*/
+/*color:#47c3e6;*/
+ color:#2868AF
+}
 .col-lg-5.nopad{
 	padding-left: 0px;
 }
@@ -50,9 +51,9 @@ h2.blgtitle a{
 }
 .blgdate{
 	font-size: 14px;
-	margin-bottom:30px;
+	margin-bottom:20px;
 	padding:0px;
-
+  color:#e65d27;
 }
 .btn_subscribe {
     background-color: #E16237;
@@ -69,6 +70,53 @@ a.morelink {
 	outline: none;
 	color: #279FCD;
 }
+.ellipsis {
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+	line-height: 1.625em; }
+
+.ellipsis:before {
+	content:"";
+	float: left;
+	width: 5px; height: 50px; }
+
+.ellipsis > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px; }
+
+.ellipsis:after {
+	content: "\02026 [See More]";
+
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+
+	float: right; position: relative;
+	top: -25px; left: 100%;
+	width: 7em; margin-left: -7em;
+	padding-right: 5px;
+
+	text-align: right;
+
+  background-size: 100% 100%;
+	background: -webkit-gradient(linear, left top, right top,
+		from(rgba(255, 255, 255, 0)), to(white), color-stop(15%, white));
+	background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 15%, white);
+	background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 15%, white);
+	background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 15%, white);
+	background: linear-gradient(to right, rgba(255, 255, 255, 0), white 15%, white);  }
+
+.ellipsis a { position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	overflow: hidden; text-indent: -9999px; z-index:1000;}
+
+.ellipsis i, .ellipsis:after {
+	font-style: normal; color: #337AB7;}
+
+.ellipsis i:before { content: "[See More]";}
 .site-logo{
 	font-family: 'Raleway', sans-serif;
   font-size: 48px;
@@ -86,4 +134,19 @@ text-indent: -9999px;
 margin-left: 40px;
 width: 100%;
 background: url(https://usabilitygeek.com/wp-content/uploads/2014/05/UsabilityGeek-Logo.png) no-repeat !important;
+}
+.search-box{
+	display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
 }

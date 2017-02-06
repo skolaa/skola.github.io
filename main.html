@@ -1,31 +1,29 @@
-	<div class ="col-xs-12" style="padding-left:5%;padding-right:5%" ng-init="getBlogList()">
-		<div class="col-xs-8" ng-repeat="blog in blogList.content">
+	<div class ="col-xs-12" style="padding-left:5%;" ng-init="getBlogList()">
+		<div class="col-xs-8">
+			<div class="col-xs-12" ng-repeat="blog in blogList.content">
 				<div class="col-xs-10">
 					<h2 class="blgtitle">
-						<a href style="text-decoration:none;" ng-bind="blog.blogTitle"></a>
+						<a href style="text-decoration:none" ng-bind="blog.blogTitle"></a>
 					</h2>
 				</div>
-			<div class="col-xs-12" ng-init="setAuthor(blog.authors)">
-				<p class="blgdate">
-					November 22, 2016,
-					<span ng-bind="authorName"></span>
+			<div class="col-xs-12" ng-repeat="author in setAuthor(blog.authors)" style="height: 30px;">
+				<p class="blgdate" ng-bind="blog.publishDate+' | Written by '+author+' Srivastava'">
 				</p>
 			</div>
-
-			<div class="col-xs-5" style="padding-right:0px;width:40%">
-				<a href>
-				<img ng-src="{{blog.imageUrl}}" style="height:25%;width:100%" />
-				</a>
+			<div class="col-xs-12 more">
+				<div class="ellipsis">
+					<div>
+						<p ng-bind="blog.shortDescription"><i></i></p>
+					</div>
+					<a href="#blogDetail/{{blog.id}}">[See More]</a>
+				</div>
 			</div>
-			<div class="col-xs-6 more">
-				<div ng-bind="blog.shortDescription"></div>
-				 <a href="#blogDetail/{{blog.id}}" class="morelink">[Read More...]</a>
-			</div>
-			<div class="col-xs-12 nopad">
+			<div class="col-xs-12 nopad" style="height:30px">
 				<hr style="width:100%;float:left;height:2px;background-color:#d4d4d4"/>
 			</div>
+		  </div>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-4" style="width:31%">
 			  <div id="share" style="right:0;top:30%;position:fixed;"></div>
 				<div style="width:80%;background-color: #FFF;border:12px solid #EEE;padding: 25px;color:#222;margin-left:7%">
 						<input type="text" class="form-control"/>
@@ -75,11 +73,10 @@
 	    </li>
 	  </ul>
 	</nav>
-
-<script>
-		$("#share").jsSocials({
-			showLabel: false,
-			showCount: false,
-			shares: ["email", "facebook", "googleplus", "linkedin"]
-		});
-</script>
+	<script>
+			$("#share").jsSocials({
+				showLabel: false,
+				showCount: false,
+				shares: ["email", "facebook", "googleplus", "linkedin"]
+			});
+	</script>
