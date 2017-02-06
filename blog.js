@@ -4,11 +4,11 @@ blogIndexApp.config(['$routeProvider','$httpProvider',
     $httpProvider.defaults.withCredentials = true;
     $routeProvider.
       when('/main', {
-		templateUrl: '/public/main.html',
+		templateUrl: 'main.html',
 		controller: 'blogIndexController'
 	}).
       when('/blogDetail/:blogId', {
-		templateUrl: '/public/blog_detail.html',
+		templateUrl: 'blog_detail.html',
 		controller: 'blogIndexController'
       }).
       otherwise({
