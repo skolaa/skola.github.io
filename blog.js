@@ -1,4 +1,4 @@
-var blogIndexApp = angular.module('blogIndexApp', ['ngRoute']);
+var blogIndexApp = angular.module('blogIndexApp', ['ngRoute', 'ngSanitize']);
 blogIndexApp.config(['$routeProvider','$httpProvider',
   function($routeProvider,$httpProvider) {
     $httpProvider.defaults.withCredentials = true;
@@ -17,30 +17,6 @@ blogIndexApp.config(['$routeProvider','$httpProvider',
 }]);
 blogIndexApp.controller('blogIndexController',["$scope","$http", "$window","$routeParams", "$sce",function($scope, $http, $window, $routeParams, $sce){
   $scope.blogList = {}
-  var md = new Remarkable('full', {
-    html:         false,        // Enable HTML tags in source
-    xhtmlOut:     false,        // Use '/' to close single tags (<br />)
-    breaks:       false,        // Convert '\n' in paragraphs into <br>
-    langPrefix:   'language-',  // CSS language prefix for fenced blocks
-    linkify:      true,         // autoconvert URL-like texts to links
-    linkTarget:   '',           // set target to open link in
-    typographer:  false,
-    quotes: '“”‘’',
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return hljs.highlight(lang, str).value;
-        } catch (__) {}
-      }
-
-      try {
-        return hljs.highlightAuto(str).value;
-      } catch (__) {}
-
-      return ''; // use external default escaping
-    }
-  });
-
   $scope.profileColorArr  = ["#4ECDC4", "#FF6B6B", "#FE4365", "#033649", "#83AF9B",
    "#ECD078", "#C02942", "#53777A", "#556270", "#C7F464",
   "#490A3D", "#BD1550", "#E6AC27"]
@@ -60,12 +36,28 @@ blogIndexApp.controller('blogIndexController',["$scope","$http", "$window","$rou
     var blogId = $routeParams.blogId;
     $http.get("http://35.154.87.133:9000/blog/"+blogId).success(function(response){
       $scope.blogDetail = response
-      $scope.blogDetail.blogText = $sce.trustAsHtml($scope.blogDetail.blogText);
-	     /*$('pre code').each(function(i, block) {
-          hljs.highlightBlock(block);
-        })*/
+      $scope.blogDetail.blogText = marked($scope.blogDetail.blogText);
     }).error(function(e){
       console.log(e)
     });
   }
-}]);
+}
+]);
+
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false, // if false -> allow plain old HTML ;)
+    smartLists: true,
+    smartypants: false,
+    highlight: function (code, lang) {
+      if (lang) {
+        return hljs.highlight(lang, code).value;
+      } else {
+        return hljs.highlightAuto(code).value;
+      }
+    }
+  });
