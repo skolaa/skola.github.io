@@ -1,13 +1,13 @@
 var blogIndexApp = angular.module('blogIndexApp', ['ngRoute', 'ngSanitize']);
 blogIndexApp.config(['$routeProvider','$httpProvider', '$locationProvider',
-  function($routeProvider,$httpProvider, $locationProvider) {
+  function($routeProvider, $httpProvider, $locationProvider) {
     $httpProvider.defaults.withCredentials = true;
     $routeProvider.
       when('/main', {
 		templateUrl: 'main.html',
 		controller: 'blogIndexController'
 	}).
-      when('/blogDetail/:blogId', {
+      when('/blogDetail/:blogUrl/:blogId', {
 		templateUrl: 'blog_detail.html',
 		controller: 'blogIndexController'
       }).
