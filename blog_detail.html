@@ -1,83 +1,62 @@
-<div class ="col-xs-12" style="padding-left:5%;padding-right:5%" ng-init="readMoreBlog()" hljs>
-    		<div class="col-xs-8" style="margin-bottom:60px;">
-          <div class="col-xs-10">
+<div class="col-xs-12" style="padding-left:5%;padding-right:5%" ng-init="readMoreBlog()" hljs>
+    <div class="col-xs-8" style="margin-bottom:60px;">
+        <div class="col-xs-10">
             <h2 class="blgtitle">
-              <a href style="text-decoration:none;" ng-bind="blogDetail.blogTitle"></a>
+                <div ng-bind="blogDetail.blogTitle"></div>
             </h2>
-          </div>
-          <div class="col-xs-12" style="height: 30px;">
-    				<p class="blgdate">
-    					<span> November 22, 2016</span>
-    				</p>
-    			</div>
-          <div class="col-xs-12" ng-bind-html="blogDetail.blogText"></div>
-          <div class="col-xs-12" id="comments">
-            <div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: http://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//skola-1.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          </div>
+            <div ng-repeat="tag in tags" style="display: inline;padding:5px;">
+                <a href ng-bind="tag.name|lowercase" class="label" style="color:#006064;border: 1px solid #37474F;font-weight:400"></a>
+            </div>
         </div>
-        <div class="col-xs-4" style="width:31%">
-          <div id="share" style="top:40%;position:fixed;right:0"></div>
-    				<div style="width:80%;background-color: #FFF;border:12px solid #EEE;padding: 25px;color:#222;margin-left:7%">
-    						<input type="text" class="form-control"/>
-    						<button class="btn_subscribe" style="margin-top:5%;margin-left:23%">SUBSCRIBE</button>
-    				</div>
-    				<div class="col-xs-12 nopad">
-    					<hr style="width:100%;float:left;height:2px;background-color:#d4d4d4"/>
-    				</div>
-    				<div class="col-xs-12">
-    						<div style="width:87%;background-color: #222;color:#FFF;margin-left:5%;height:4%;padding-left:3%;padding-top:0.4%">
-    						<span style="">RELATED STORIES</span>
-    						</div>
-    						<div>
-                  <div class="col-xs-10" style="padding-top:7%">
-                    <a href style="text-decoration:none;"> 10 Free Screen Readers For Blind Or Visually Impaired Users</a>
-                  </div>
-    							<div class="col-xs-12 nopad">
-    								<hr style="width:100%;float:left;height:2px;background-color:#d4d4d4"/>
-    							</div>
-                  <div class="col-xs-10">
-                    <a href style="text-decoration:none;"> 10 Free Web-Based Web Site Accessibility Evaluation Tools</a>
-                  </div>
-                  <div class="col-xs-12 nopad">
-                    <hr style="width:100%;float:left;height:2px;background-color:#d4d4d4"/>
-                  </div>
-    						</div>
-    				</div>
-    		</div>
-      </div>
-    <!--BODY ENDS-->
+        <div class="col-xs-12" style="height: 30px;">
+            <p class=" blgdate " ng-bind="blogDetail.publishDate+ ' | Written by '+author ">
+            </p>
+        </div>
+        <div class="col-xs-12 " ng-bind-html="blogDetail.blogText "></div>
+        <div class="col-xs-12 " id="comments ">
+            <div class="fb-comments " data-href="http://skolatech.com/ " data-numposts="5 " data-width="780px "></div>
+        </div>
+    </div>
+    <div class="col-xs-4 " style="width:31% ">
+        <div id="share " style="top:40%;position:fixed;right:0 "></div>
+        <!--<div style="width:80%;background-color: #FFF;border:12px solid #EEE;padding: 25px;color:#222;margin-left:7% ">
+            <input type="text " class="form-control " ng-model="userEmail " />
+            <button class="btn_subscribe " style="margin-top:5%;margin-left:23% " ng-click="subscribe(userEmail) ">SUBSCRIBE</button>
+        </div>-->
+        <div class="col-xs-12 nopad ">
+            <hr style="width:100%;float:left;height:2px;background-color:#d4d4d4 " />
+        </div>
+        <div class="col-xs-12 ">
+            <div style="width:87%;background-color: #5A5E75;color:#FFF;margin-left:5%;padding-left:3%;padding-top:0.4% ">
+                <span>RELATED STORIES</span>
+            </div>
+            <div ng-repeat="relatedStory in relatedStories track by $index ">
+                <div class="col-xs-10 " style="padding-top:7% ">
+                    <a href="#blogDetail/{{relatedStory.id}} " style="text-decoration:none; " ng-bind="relatedStory.title "></a>
+                </div>
+                <div class="col-xs-12 nopad ">
+                    <hr style="width:100%;float:left;height:2px;background-color:#d4d4d4 " />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--BODY ENDS-->
 <script>
-		$("#share").jsSocials({
-			showLabel: false,
-			showCount: false,
-			shares: ["email", "facebook", "googleplus", "linkedin"]
-		});
+    $("#share ").jsSocials({
+        showLabel: false,
+        showCount: false,
+        shares: ["email ", "facebook ", "googleplus ", "linkedin "]
+    });
 </script>
-<script>hljs.initHighlightingOnLoad();</script>
+<div id="fb-root "></div>
 <script>
-  window.onload = function() {
-      var aCodes = document.getElementsByTagName('code');
-      for (var i=0; i < aCodes.length; i++) {
-          hljs.highlightBlock(aCodes[i]);
-      }
-  };
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "http://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=691932531009055 ";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
