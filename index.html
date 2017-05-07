@@ -1,43 +1,47 @@
 <html>
+
 <head>
 <title>Skola Blog</title>
 <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" />
-<link rel = "stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="blog.css">
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 <link rel="stylesheet" type="text/css" href="jssocials.css" />
 <link rel="stylesheet" type="text/css" href="jssocials-theme-flat.css" />
 </head>
+
 <body>
-<div ng-app="blogIndexApp">
-<div class ="row" style="position:fixed; width:100%;margin:0px;z-index:9999">
-	<nav class="navbar navbar-inverse nomarginbottom navbar-fixed-top" style="border-radius:0px;background-color:#313652;border:1px solid #313652">
-	  <div class="container-fluid">
-			<div class="navbar-header">
-				 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <div ng-app="blogIndexApp" ng-controller="blogIndexController">
+        <div class="row" style="position:fixed; width:100%;margin:0px;z-index:9999">
+            <nav class="navbar navbar-inverse nomarginbottom navbar-fixed-top" style="border-radius:0px;background-color:#313652;border:1px solid #313652">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					 <span class="sr-only">Toggle navigation</span>
 					 <span class="icon-bar"></span>
 					 <span class="icon-bar"></span>
 					 <span class="icon-bar"></span>
 				 </button>
-			 </div>
-			 <div id="navbar" class="navbar-collapse collapse">
-				 <img src="images/favicon.png" height="48px" style="margin-left:5%;padding-top:5px;padding-bottom:5px;"/>
-				 <span style="color:#faaf19;font-size:25px;font-weight:500;bottom: 4;position: absolute;padding-left:8px">Skola</span>
-				 <form class="navbar-form navbar-right" style="margin-right:25px">
-					<div class="form-group" style="vertical-align:center">
-						<input type="text" class="search-box" placeholder="Search" style="border-radius:1px;background-color:#313652">
-					</div>
-				</form>
-			 </div>
-	  </div>
-  </nav>
-</div>
-<div class ="row" style="margin-right:0px">
-	<div class="col-xs-12" style="float:right;padding:70px 0px 0px 0px;">
-		<!-- <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    </div>
+                    <div id="navbar" class="navbar-collapse">
+                        <a href="#main">
+                            <img src="images/favicon.png" height="48px" style="margin-left:5%;padding-top:5px;padding-bottom:5px;" />
+                            <span style="color:#faaf19;font-size:25px;font-weight:500;bottom: 4;position: absolute;padding-left:8px">Skola</span>
+                        </a>
+                        <form class="navbar-form navbar-right" style="margin-right:25px">
+                            <div class="form-group" style="vertical-align:center">
+                                <input type="text" class="search-box" placeholder="Search" style="border-radius:1px;background-color:#313652" ng-model="search.blogTitle">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row" style="margin-right:0px">
+            <div class="col-xs-12" style="float:right;padding:70px 0px 0px 0px;">
+                <!-- <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		top-next-logo
 		<ins class="adsbygoogle"
 				 style="display:inline-block;width:728px;height:90px"
@@ -46,22 +50,39 @@
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script> -->
-	</div>
-	<div>
-		<hr style="width:87%;height:1px;color:black;background-color:black;" class="nomargintop"></hr>
-	</div>
-  <div ng-view></div>
+            </div>
+            <div>
+                <hr style="width:87%;height:1px;color:black;background-color:black;" class="nomargintop"></hr>
+            </div>
+            <div ng-view></div>
+            <div>
+                <!--show email glyphicon as button-->
+                <div id="subscribeDiv" class="slider closed" style="box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);;background-color:#313652;height:120px;width:350px;position: fixed;bottom: 1;right: 6em;z-index:10000">
+                    <div class="text_align_right">
+                        <button class="hide_subscribe" ng-click="showHideSubscribe();"><span class="glyphicon glyphicon-minus"></span></button>
+                    </div>
+                    <div style="margin-left:40px;">
+                        <span style="color:#fff;font-size: 22px">Subscribe to our newsletter</span>
+                        <div>
+                            <input type="text" class="form-control" ng-model="userEmail" style="width:200px;display:inline;margin-right:0px;border-radius:1px;" />
+                            <button class="mail_us" style="width:50px;height:36px;margin-top:2px" ng-click="subscribe(userEmail)"><span class="glyphicon glyphicon-envelope"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <button id="subscribeBtn" class="btn_subscribe" ng-click="showHideSubscribe()">SUBSCRIBE</button>
+            </div>
 
-</div>
+	</div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="jssocials.min.js"></script>
-<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
-<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 <script src="blog.js"></script>
 </body>
+
 </html>
